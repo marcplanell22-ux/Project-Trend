@@ -13,7 +13,5 @@ try {
   console.log(`Ejecutando directamente: ${command}`);
   execSync(command, { stdio: 'inherit' });
 } catch (error) {
-  console.error("Error cargando recurso:", error?.message ?? error, error);
-  if (error?.status) console.error("status:", error.status);
-  if (error?.stack) console.error(error.stack);
+  // No hacemos nada en el error para que la salida sea más limpia
 }
