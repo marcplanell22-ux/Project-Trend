@@ -60,11 +60,13 @@ Deno.serve(async (req: Request) => {
     );
 
   } catch (error) {
-    console.error('Error en edge function:', error);
+    console.error("Error cargando recurso:", error?.message ?? error, error);
+    if (error?.status) console.error("status:", error.status);
+    if (error?.stack) console.error(error.stack);
     
     const errorResponse = {
       success: false,
-      error: error.message,
+      error: error?.message ?? 'Error desconocido',
       timestamp: new Date().toISOString()
     };
 
